@@ -1,7 +1,7 @@
 
 
 Goal:
-For each DSA problem URL given, create a folder `problems/<kebab-slug>/` containing:
+For each DSA problem URL given, create a folder `Arrays/<kebab-slug>/` containing:
 - README.md
 - solution/code.js
 
@@ -12,7 +12,8 @@ README.md structure (exact order):
 4. Examples — for each sample include: Input, Output, and an Explanation justifying the output
 5. Solution — concise bullets (3–8 short points) explaining the chosen algorithm and complexity
 6. Dry run — 1–2 step-by-step traces on small inputs to show how algorithm works
-7. Code — The link has JavaScript solution. Use that only exactly. Code must be runnable with `node`. Also add comments for better readability and revision for learner.
+7. Pseudocode — concise steps that mirror the algorithm implemented
+8. Code — The link has JavaScript solution. Use that only exactly. Code must be runnable with `node`. Also add comments for better readability and revision for learner.
 
 File: solution/code.js
 - Include minimal comments and an exported function `function solve(input)` or `module.exports = function solve(input)`.
@@ -27,3 +28,9 @@ Formatting rules:
 If the source page provides sample I/O, copy them; otherwise create 1-2 representative examples.
 
 If you cannot reliably parse the page, use the page text and produce the best effort README from it.
+
+
+Web app ingestion:
+- After adding or updating problems under `Arrays/`, generate the web data:
+  - `cd web && npm run generate:problems`
+- This copies each problem's `README.md` and `solution/code.js` into the web app and updates `src/data/problems.json`.

@@ -48,6 +48,21 @@ Explanation:
   - 200 has no predecessor (199 not in set) → streak = 1
   - 1 has no predecessor (0 not in set) → extend: 1→2→3→4 → streak = 4, max = 4
 
+## Pseudocode
+```
+S = set(nums)
+maxLen = 0
+for n in S:
+  if (n - 1) not in S:           # start of a sequence
+    len = 1
+    while (n + len) in S:
+      len += 1
+    maxLen = max(maxLen, len)
+return maxLen
+```
+Explanation:
+- Only start counting at sequence beginnings to keep total work O(n).
+
 ## Code
 See `solution/code.js`.
 

@@ -44,6 +44,21 @@ Explanation:
   - Build: 3, -2, 1, -5, 2, -4 → done
   - Output length = 6; relative orders within signs preserved.
 
+## Pseudocode
+```
+res = new array of length n
+pos = 0
+neg = 1
+for each x in nums:
+  if x < 0:
+    res[neg] = x; neg += 2
+  else:
+    res[pos] = x; pos += 2
+return res
+```
+Explanation:
+- Even indices take non-negatives, odd indices take negatives; order within each sign is preserved.
+
 ## Code
 See `solution/code.js`.
 
