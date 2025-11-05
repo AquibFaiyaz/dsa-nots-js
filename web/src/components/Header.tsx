@@ -33,7 +33,7 @@ export default function Header() {
     >
       <Toolbar sx={{ gap: 2, px: 2 }}>
         {/* Brand */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, mr: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, mr: 1, cursor: 'pointer' }} onClick={() => navigate('/') }>
           <Box
             sx={{
               width: 20,

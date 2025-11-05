@@ -3,9 +3,13 @@ import { Box, Divider, Paper, Typography } from '@mui/material'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
-type Section = { title: string; body: string }
+export type Section = { title: string; body: string }
 
-function splitSections(markdown: string): Section[] {
+export function slugifyTitle(title: string): string {
+  return title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-').slice(0, 80)
+}
+
+export function splitSections(markdown: string): Section[] {
   const lines = markdown.split(/\r?\n/)
   const sections: Section[] = []
   let current: Section | null = null
@@ -40,7 +44,8 @@ export default function MarkdownSections({ markdown }: { markdown: string }) {
         <Paper
           key={idx}
           variant="outlined"
-          sx={{ p: 3, bgcolor: boxBg, color: text, border, borderRadius: 2 }}
+          id={`sec-${slugifyTitle(s.title)}`}
+          sx={{ p: 3, bgcolor: boxBg, color: text, border, borderRadius: 2, scrollMarginTop: 80 }}
         >
           <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>{s.title}</Typography>
           <Divider sx={{ mb: 2, borderColor: 'rgba(255,255,255,0.08)' }} />
